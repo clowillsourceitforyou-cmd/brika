@@ -60,13 +60,12 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="wrap py-8">
+    <div className="wrap py-8 pb-28 sm:pb-8">
       <button onClick={() => navigate(-1)} className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted hover:text-azur">
         <ArrowLeft size={16} /> Back
       </button>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        {/* GALLERY */}
         <div>
           <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-sand">
             {product.images?.[active] ? (
@@ -92,7 +91,6 @@ export default function ProductDetail() {
           )}
         </div>
 
-        {/* INFO */}
         <div className="lg:pt-4">
           <h1 className="display text-3xl font-extrabold sm:text-4xl">{product.name}</h1>
           <div className="mt-3 flex items-center gap-3">
@@ -133,7 +131,7 @@ export default function ProductDetail() {
             </div>
           )}
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 hidden flex-col gap-3 sm:flex sm:flex-row">
             <button
               onClick={handleAdd}
               disabled={!product.in_stock}
@@ -153,6 +151,35 @@ export default function ProductDetail() {
             <li className="flex items-center gap-3"><RotateCcw size={17} className="text-azur" /> Easy exchanges within 7 days</li>
             <li className="flex items-center gap-3"><Check size={17} className="text-azur" /> Made in limited runs</li>
           </ul>
+        </div>
+      </div>
+
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-paper/95 backdrop-blur-md sm:hidden">
+        <div className="wrap flex items-center gap-3 py-3">
+          <div className="shrink-0">
+            <p className="text-base font-semibold leading-none">{money(product.price, sym)}</p>
+            {needsSize && (
+              <p className={`mt-1 text-[11px] ${warn && !size ? "text-azur" : "text-muted"}`}>
+                {size ? `Size ${size}` : "Select a size"}
+              </p>
+            )}
+          </div>
+          {settings.whatsapp_number && product.in_stock && (
+            <button
+              onClick={orderWhatsApp}
+              aria-label="Order on WhatsApp"
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-azur text-paper transition active:scale-95"
+            >
+              <MessageCircle size={20} />
+            </button>
+          )}
+          <button
+            onClick={handleAdd}
+            disabled={!product.in_stock}
+            className="btn-primary h-12 flex-1"
+          >
+            {product.in_stock ? "Add to bag" : "Sold out"}
+          </button>
         </div>
       </div>
     </div>
