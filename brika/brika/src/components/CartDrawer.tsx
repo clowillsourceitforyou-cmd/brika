@@ -14,7 +14,7 @@ export default function CartDrawer() {
 
   return (
     <div className="fixed inset-0 z-[60]">
-      <div className="absolute inset-0 animate-fade bg-ink/40" onClick={close} />
+      <div className="absolute inset-0 animate-fade bg-ink/45 backdrop-blur-md" onClick={close} />
       <aside className="absolute right-0 top-0 flex h-full w-full max-w-md animate-slidein flex-col bg-paper shadow-2xl">
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
           <h2 className="display text-xl font-bold">Your bag</h2>
@@ -54,7 +54,7 @@ export default function CartDrawer() {
                     <div className="mt-auto flex items-center justify-between">
                       <div className="flex items-center rounded-full border border-line">
                         <button
-                          className="grid h-7 w-7 place-items-center hover:text-azur"
+                          className="grid h-8 w-8 place-items-center hover:text-azur active:scale-95"
                           onClick={() => setQty(l.key, l.quantity - 1)}
                           aria-label="Decrease quantity"
                         >
@@ -62,7 +62,7 @@ export default function CartDrawer() {
                         </button>
                         <span className="w-6 text-center text-sm">{l.quantity}</span>
                         <button
-                          className="grid h-7 w-7 place-items-center hover:text-azur"
+                          className="grid h-8 w-8 place-items-center hover:text-azur active:scale-95"
                           onClick={() => setQty(l.key, l.quantity + 1)}
                           aria-label="Increase quantity"
                         >
