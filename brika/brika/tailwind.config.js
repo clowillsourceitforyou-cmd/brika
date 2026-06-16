@@ -27,6 +27,10 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0)" },
         },
+        slideleft: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
         fade: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
@@ -38,6 +42,7 @@ export default {
       },
       animation: {
         slidein: "slidein .32s cubic-bezier(.22,1,.36,1)",
+        slideleft: "slideleft .34s cubic-bezier(.22,1,.36,1)",
         fade: "fade .3s ease",
         rise: "rise .6s cubic-bezier(.22,1,.36,1) both",
       },
