@@ -17,6 +17,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  // lock body scroll while the drawer is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -82,13 +83,16 @@ export default function Header() {
         </div>
       </div>
 
+      {/* MOBILE DRAWER */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
+          {/* frosted, dimmed backdrop — blurs the page behind */}
           <button
             aria-label="Close menu"
             onClick={() => setMenuOpen(false)}
             className="animate-fade absolute inset-0 h-full w-full cursor-default bg-ink/45 backdrop-blur-md"
           />
+          {/* solid panel */}
           <div className="animate-slideleft absolute inset-y-0 left-0 flex w-[84%] max-w-sm flex-col bg-paper shadow-2xl">
             <div className="flex items-center justify-between border-b border-line px-6 py-4">
               <Link
@@ -127,7 +131,7 @@ export default function Header() {
 
             <div className="mt-auto border-t border-line px-6 py-5">
               {settings.whatsapp_number && (
-                
+                <a
                   href={`https://wa.me/${settings.whatsapp_number}`}
                   target="_blank"
                   rel="noreferrer"
